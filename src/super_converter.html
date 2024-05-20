@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<body>
+		<div id="root"></div>
+	</body>
+	<script src="https://unpkg.com/react@18.2.0/umd/react.production.min.js"></script>
+	<script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+	<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+	<script type="text/babel">
+		function App() {
+			const [inverted, setInverted] = React.useState(false);
+			const [hours, setHours] = React.useState(0);
+			const [minutes, setMinutes] = React.useState(0);
+			const [kil, setKil] = React.useState(0);
+			const [mile, setMile] = React.useState(0);
+
+			const handleMinutesChange = (e) => {
+				const value = parseFloat(e.target.value);
+				setMinutes(value);
+				if (!inverted) setHours(Math.round(value / 60));
+			};
+
+			const handleHoursChange = (e) => {
+				const value = parseFloat(e.target.value);
+				setHours(value);
+				if (inverted) setMinutes(Math.round(value * 60));
+			};
+
+			const handleMileChange = (e) => {
+				const value = parseFloat(e.target.value);
+				setMile(value);
+				if (!inverted) setKil(Math.round(value * 1.60933));
+			};
+
+			const handleKilChange = (e) => {
+				const value = parseFloat(e.target.value);
+				setKil(value);
+				if (inverted) setMile(Math.round(value / 1.60933));
+			};
+
+			const reset = () => {
+				setMinutes(0);
+				setHours(0);
+			};
+
+			const reset1 = () => {
+				setKil(0);
+				setMile(0);
+			};
+
+			const invert = () => {
+				setInverted(!inverted);
+			};
+
+			return (
+				<div>
+					<h3>변환기</h3>
+					<div>
+						<button onClick={invert}>{!inverted ? '킬로미터/마일' : '분/시'}</button>
+					</div>
+
+					{!inverted ? (
+						<>
+							<h3>분/시 변환기</h3>
+							<div>
+								<label>분: </label>
+								<input placeholder="Minutes" type="number" value={minutes} onChange={handleMinutesChange} />
+							</div>
+							<div>
+								<label>시: </label>
+								<input placeholder="Hours" type="number" value={hours} onChange={handleHoursChange} />
+							</div>
+							<br />
+							<div>
+								<button onClick={reset}>리셋</button>
+							</div>
+						</>
+					) : (
+						<>
+							<h3>킬로미터/마일 변환기</h3>
+							<div>
+								<label>킬로미터: </label>
+								<input placeholder="Kilometer" type="number" value={kil} onChange={handleKilChange} />
+							</div>
+							<div>
+								<label>마일: </label>
+								<input placeholder="Mile" type="number" value={mile} onChange={handleMileChange} />
+							</div>
+							<br />
+							<div>
+								<button onClick={reset1}>리셋</button>
+							</div>
+						</>
+					)}
+				</div>
+			);
+		}
+
+		ReactDOM.render(<App />, document.getElementById('root'));
+	</script>
+</html>
