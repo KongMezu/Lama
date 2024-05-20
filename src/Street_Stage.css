@@ -1,0 +1,78 @@
+.app-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.container {
+    position: relative;
+    width: 430px;
+    height: 932px;
+    overflow: hidden;
+}
+
+.background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.box {
+    width: 364px; 
+    height: 463px;
+    top: 18vh;
+    left: 4vh;
+    position: absolute;
+    background-color: rgb(88, 92, 191, 0.2);
+    border-radius: 20px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+}
+
+.street-table {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.prev-button {
+    position: absolute;
+    bottom: calc(35 / 932 * 100vh + 48px + 10px); 
+    left: 3vh; 
+    width: 104px;
+    height: 48px;
+    background-color: rgba(245, 245, 245, 0.83);
+    color: #0C2E2B;
+    border: none;
+    border-radius: 50px;
+    font-size: 0.9em; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    z-index: 4; 
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.3);
+}
+
+.back-button {
+    position: absolute;
+    bottom: calc(25 / 932 * 100vh); 
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(242 / 932 * 100vh);
+    height: calc(48 / 932 * 100vh);
+    background-color: #1B377E;
+    font-style: bold;
+    color: white;
+    border: none;
+    border-radius: 50px; 
+    font-size: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3; 
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.3);
+}
